@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+
+  <!-- アプリケーション層、インフラストラクチャ層、プレゼンテーション層のプロジェクト参照 -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Application\RestAPI_Exercise.Application.csproj" />
+    <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Infrastructure\RestAPI_Exercise.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Presentation\RestAPI_Exercise.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>

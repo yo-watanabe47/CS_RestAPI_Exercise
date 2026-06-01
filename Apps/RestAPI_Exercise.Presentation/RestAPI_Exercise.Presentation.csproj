@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+  </ItemGroup>
+
+   <!-- アプリケーション層、インフラストラクチャ層のプロジェクトを参照 -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Application\RestAPI_Exercise.Application.csproj" />
+    <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Infrastructure\RestAPI_Exercise.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "OEh1DH7uUKU=",
+  "success": true,
+  "projectFilePath": "/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Presentation/RestAPI_Exercise.Presentation.csproj",
+  "expectedPackageFiles": [
+    "/home/fullness/.nuget/packages/microsoft.aspnetcore.openapi/10.0.8/microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "/home/fullness/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

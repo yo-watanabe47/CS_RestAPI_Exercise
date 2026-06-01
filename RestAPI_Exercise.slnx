@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Apps/">
+    <Project Path="Apps/RestAPI_Exercise.Application/RestAPI_Exercise.Application.csproj" />
+    <Project Path="Apps/RestAPI_Exercise.Infrastructure/RestAPI_Exercise.Infrastructure.csproj" />
+    <Project Path="Apps/RestAPI_Exercise.Presentation/RestAPI_Exercise.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/RestAPI_Exercise.Application.Tests/RestAPI_Exercise.Application.Tests.csproj" />
+    <Project Path="Tests/RestAPI_Exercise.Infrastructure.Tests/RestAPI_Exercise.Infrastructure.Tests.csproj" />
+    <Project Path="Tests/RestAPI_Exercise.Presentation.Tests/RestAPI_Exercise.Presentation.Tests.csproj" />
+  </Folder>
+</Solution>
