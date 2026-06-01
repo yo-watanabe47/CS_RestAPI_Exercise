@@ -1,23 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z2Y4KnK8uGo=",
-  "success": false,
+  "dgSpecHash": "/8KXM1vQkiI=",
+  "success": true,
   "projectFilePath": "/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/RestAPI_Exercise.Infrastructure.csproj",
-  "expectedPackageFiles": [
-    "/home/fullness/.nuget/packages/microsoft.netcore.app.ref/8.0.27/microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
-    "/home/fullness/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.27/microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512"
-  ],
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "プロジェクト RestAPI_Exercise.Application は net8.0 (.NETCoreApp,Version=v8.0) と互換性がありません。 プロジェクト RestAPI_Exercise.Application がサポートするもの: net10.0 (.NETCoreApp,Version=v10.0)",
-      "projectPath": "/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/RestAPI_Exercise.Infrastructure.csproj",
-      "filePath": "/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/RestAPI_Exercise.Infrastructure.csproj",
-      "libraryId": "RestAPI_Exercise.Application",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "expectedPackageFiles": [],
+  "logs": []
 }
