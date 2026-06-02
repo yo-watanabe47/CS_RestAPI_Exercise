@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "RestAPI_Exercise.Infrastructure/1.0.0": {
+        "dependencies": {
+          "RestAPI_Exercise.Application": "1.0.0"
+        },
+        "runtime": {
+          "RestAPI_Exercise.Infrastructure.dll": {}
+        }
+      },
+      "RestAPI_Exercise.Application/1.0.0": {
+        "runtime": {
+          "RestAPI_Exercise.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RestAPI_Exercise.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RestAPI_Exercise.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

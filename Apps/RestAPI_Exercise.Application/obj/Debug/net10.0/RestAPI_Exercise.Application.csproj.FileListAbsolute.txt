@@ -1,0 +1,12 @@
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/bin/Debug/net10.0/RestAPI_Exercise.Application.deps.json
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/bin/Debug/net10.0/RestAPI_Exercise.Application.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/bin/Debug/net10.0/RestAPI_Exercise.Application.pdb
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.AssemblyInfoInputs.cache
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.AssemblyInfo.cs
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.csproj.CoreCompileInputs.cache
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.sourcelink.json
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/refint/RestAPI_Exercise.Application.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.pdb
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/ref/RestAPI_Exercise.Application.dll

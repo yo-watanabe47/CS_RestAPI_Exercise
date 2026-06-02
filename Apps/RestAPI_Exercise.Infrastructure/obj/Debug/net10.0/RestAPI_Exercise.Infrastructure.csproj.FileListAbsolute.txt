@@ -1,0 +1,16 @@
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Infrastructure.deps.json
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Infrastructure.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Infrastructure.pdb
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Application.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Application.pdb
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.csproj.AssemblyReference.cache
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.AssemblyInfoInputs.cache
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.AssemblyInfo.cs
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.csproj.CoreCompileInputs.cache
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.sourcelink.json
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_.26480AD1.Up2Date
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/refint/RestAPI_Exercise.Infrastructure.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.pdb
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/ref/RestAPI_Exercise.Infrastructure.dll
