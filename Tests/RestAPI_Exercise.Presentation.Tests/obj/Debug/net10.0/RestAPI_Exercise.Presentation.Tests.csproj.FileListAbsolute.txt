@@ -281,4 +281,3 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Presentation.Tests/obj/Debug/net10.0/RestAPI_Exercise.Presentation.Tests.pdb
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Presentation.Tests/obj/Debug/net10.0/RestAPI_Exercise.Presentation.Tests.genruntimeconfig.cache
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Presentation.Tests/obj/Debug/net10.0/ref/RestAPI_Exercise.Presentation.Tests.dll
-/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Presentation.Tests/bin/Debug/net10.0/ja/MSTestAdapter.PlatformServices.resources.dll

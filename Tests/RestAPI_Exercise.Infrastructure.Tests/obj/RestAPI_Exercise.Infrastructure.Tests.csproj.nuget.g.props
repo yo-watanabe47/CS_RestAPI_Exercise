@@ -13,6 +13,7 @@
     <SourceRoot Include="/home/fullness/.nuget/packages/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/10.0.8/buildTransitive/net10.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/10.0.8/buildTransitive/net10.0/Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)mstest.analyzers/4.0.1/buildTransitive/MSTest.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)mstest.analyzers/4.0.1/buildTransitive/MSTest.Analyzers.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.testing.platform/2.0.1/buildTransitive/net9.0/Microsoft.Testing.Platform.props" Condition="Exists('$(NuGetPackageRoot)microsoft.testing.platform/2.0.1/buildTransitive/net9.0/Microsoft.Testing.Platform.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.testing.platform.msbuild/2.0.1/buildTransitive/Microsoft.Testing.Platform.MSBuild.props" Condition="Exists('$(NuGetPackageRoot)microsoft.testing.platform.msbuild/2.0.1/buildTransitive/Microsoft.Testing.Platform.MSBuild.props')" />
