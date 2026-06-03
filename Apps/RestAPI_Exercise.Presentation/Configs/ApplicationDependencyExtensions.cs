@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestAPI_Exercise.Infrastructure.Contexts;
+using RestAPI_Exercise.Infrastructure.Adapters;
 namespace RestAPI_Exercise.Presentation.Configs;
 /// <summary>
 /// 依存関係(DI)の設定
@@ -56,7 +57,17 @@ private static IServiceCollection AddInfrastructureDependencies(
             options.LogTo(Console.WriteLine, LogLevel.Debug);
             // PostgreSQLのデータベースを指定された接続文字列を使用して構成
             options.UseNpgsql(connectstr);
-        });return services;
+        });
+            // ドメインオブジェクト:ProductSctockとProductStockEntityの相互変換クラス
+    services.AddScoped<ProductStockEntityAdapter>();
+    // ドメインオブジェクト:ProductCategoryとProductCategoryEntityの相互変換クラス
+    services.AddScoped<ProductCategoryEntityAdapter>();
+    // ドメインオブジェクト:ProductとProductEntityの相互変換クラス
+    services.AddScoped<ProductEntityAdapter>();
+    
+    return services;
+
+        return services;
 }
 
 
@@ -86,6 +97,7 @@ private static IServiceCollection AddInfrastructureDependencies(
 
     /// <summary>
     /// テストプロジェクトにServiceProviderを提供するヘルパメソッド
+    /// 生成されたServiceProviderは、テストクラスで使用されるDIコンテナとして機能する
     /// </summary>
     /// <param name="config"></param>
     /// <param name="configureServices"></param>

@@ -23,6 +23,7 @@ public class AddDbContextTests
 
     /// <summary>
     /// テストクラスの初期化
+    /// すべてのテストの前処理
     /// </summary>
     /// <param name="context"></param>
     [ClassInitialize]
@@ -31,16 +32,19 @@ public class AddDbContextTests
         // MSTestテスト用ログ出力ハンドルを設定する
         _testContext = context;
         // アプリケーション管理を生成
+        //jsonファイルから設定を読み込む
         var config = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false)
             .Build();
         // サービスプロバイダ(DIコンテナ)の生成
+        //DIコンテナを生成するためのヘルパーメソッドを呼び出す
         _provider = ApplicationDependencyExtensions.BuildAppProvider(config);
     }
 
     /// <summary>
     /// テストクラスクリーンアップ
+    /// すべてのテストの後処理
     /// </summary>
     [ClassCleanup]
     public static void ClassCleanup()
@@ -58,6 +62,7 @@ public class AddDbContextTests
         // スコープドサービスを取得する
         _scope = _provider!.CreateScope();
         // テストターゲットを取得
+        //DIコンテナからAppDbContextを取得する
         _dbContext =
         _scope.ServiceProvider.GetRequiredService<AppDbContext>();
     }
@@ -85,6 +90,8 @@ public class AddDbContextTests
         }
         catch (Exception ex)
         {
+            //スタックトレース（プログラムの呼び出し履歴）を見つける
+            
             _testContext?.WriteLine($"例外が発生しました: {ex.Message}");
             _testContext?.WriteLine($"スタックトレース:\n{ex.StackTrace}");
             Assert.Fail("接続に失敗しました。");
