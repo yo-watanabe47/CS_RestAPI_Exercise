@@ -14,3 +14,5 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/refint/RestAPI_Exercise.Infrastructure.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.pdb
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/ref/RestAPI_Exercise.Infrastructure.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/bin/Debug/net10.0/RestAPI_Exercise.Infrastructure.runtimeconfig.json
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Infrastructure/obj/Debug/net10.0/RestAPI_Exercise.Infrastructure.genruntimeconfig.cache

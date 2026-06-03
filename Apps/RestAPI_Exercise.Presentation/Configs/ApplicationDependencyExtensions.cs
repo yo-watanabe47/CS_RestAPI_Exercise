@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RestAPI_Exercise.Infrastructure.Contexts;
 namespace RestAPI_Exercise.Presentation.Configs;
 /// <summary>
 /// 依存関係(DI)の設定
@@ -19,33 +20,54 @@ public static class ApplicationDependencyExtensions
         // インフラストラクチャ層の依存関係を追加
         services.AddInfrastructureDependencies(config);
         // アプリケーション層の依存関係を追加
-        services.AddApplicationLayerDependencies();
+        services.AddApplicationLayerDependencies(config);
         // プレゼンテーション層の依存関係を追加
-        services.AddPresentationLayerDependencies();
+        services.AddPresentationLayerDependencies(config);
         return services;
     }
 
-    /// <summary>
-    /// インフラストラクチャ層の依存関係を追加
-    /// </summary>
-    private static IServiceCollection AddInfrastructureDependencies(
-        this IServiceCollection services, IConfiguration config)
-    {
-        // DbContext の登録
-        var connectstr = config.GetConnectionString("MySqlConnection");
+    // /// <summary>
+    // /// インフラストラクチャ層の依存関係を追加
+    // /// </summary>
+    // /// <param name="services">依存関係注入(DI)のサービスコレクション</param>
+    // /// <param name="config">アプリケーションの設定情報を管理</param>
+    // /// <returns></returns>
+    // private static IServiceCollection AddInfrastructureDependencies(
+    //     this IServiceCollection services, IConfiguration config)
+    // {
+    //     return services;
+    // }
+
+/// <summary>
+/// インフラストラクチャ層の依存関係を追加
+/// </summary>
+/// <param name="services">依存関係注入(DI)のサービスコレクション</param>
+/// <param name="config">アプリケーションの設定情報を管理</param>
+/// <returns></returns>
+private static IServiceCollection AddInfrastructureDependencies(
+   this IServiceCollection services, IConfiguration config)
+{
+        // PostgreSQLの接続文字列を設定ファイルから取得する
+        var connectstr = config.GetConnectionString("PostgreSQLConnection");
+        // AddDbContextをサービスコレクションに登録する
         services.AddDbContext<AppDbContext>(options =>
         {
+            // データベース操作ログをデバッグレベルでコンソールに出力する
             options.LogTo(Console.WriteLine, LogLevel.Debug);
-            options.UseMySql(connectstr, ServerVersion.AutoDetect(connectstr));
-        });
-        return services;
-    }
+            // PostgreSQLのデータベースを指定された接続文字列を使用して構成
+            options.UseNpgsql(connectstr);
+        });return services;
+}
+
 
     /// <summary>
     /// アプリケーション層の依存関係を追加
     /// </summary>
+    /// <param name="services">依存関係注入(DI)のサービスコレクション</param>
+    /// <param name="config"></param>
+    /// <returns></returns>
     private static IServiceCollection AddApplicationLayerDependencies(
-    this IServiceCollection services)
+        this IServiceCollection services, IConfiguration config)
     {
         return services;
     }
@@ -53,8 +75,11 @@ public static class ApplicationDependencyExtensions
     /// <summary>
     /// プレゼンテーション層の依存関係を追加
     /// </summary>
+    /// <param name="services">依存関係注入(DI)のサービスコレクション</param>
+    /// <param name="config"></param>
+    /// <returns></returns>
     private static IServiceCollection AddPresentationLayerDependencies(
-    this IServiceCollection services)
+        this IServiceCollection services, IConfiguration config)
     {
         return services;
     }
@@ -82,8 +107,4 @@ public static class ApplicationDependencyExtensions
 
         return services.BuildServiceProvider(validateScopes: true);
     }
-
-
-
-
 }
