@@ -1,6 +1,7 @@
 namespace RestAPI_Exercise.Application.Exceptions;
 /// <summary>
 /// 内部エラーを表す例外クラス
+/// HTTPstatuscode:500 Internal Server Errorを表す
 /// </summary>
 public class InternalException : Exception
 {

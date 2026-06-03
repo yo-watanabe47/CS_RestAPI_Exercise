@@ -19,6 +19,7 @@ IConverter<Product, ProductEntity>, IRestorer<Product, ProductEntity>
     public Task<ProductEntity> ConvertAsync(Product domain)
     {
         // 引数domainがnullの場合
+        //nullがここまで来るのはエラーなので、InternalExceptionをスローする
         _ = domain ?? throw new InternalException("引数domainがnullです。");
         // ドメインオブジェクト:DepartmentをDepartmentEntityに変換する
         var entity = new ProductEntity();
@@ -26,6 +27,7 @@ IConverter<Product, ProductEntity>, IRestorer<Product, ProductEntity>
         entity.Name = domain.Name;
         entity.Price = domain.Price;
         return Task.FromResult(entity);
+        //Task.FromResultは、非同期メソッドの戻り値を簡単に作成するためのメソッド
     }
 
     /// <summary>

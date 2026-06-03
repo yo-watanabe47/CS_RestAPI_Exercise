@@ -64,10 +64,9 @@ private static IServiceCollection AddInfrastructureDependencies(
     services.AddScoped<ProductCategoryEntityAdapter>();
     // ドメインオブジェクト:ProductとProductEntityの相互変換クラス
     services.AddScoped<ProductEntityAdapter>();
-    
+            // 商品、商品カテゴリ、商品在庫オブジェクトの相互変換Factoryクラス
+    services.AddScoped<ProductFactory>();
     return services;
-
-        return services;
 }
 
 
