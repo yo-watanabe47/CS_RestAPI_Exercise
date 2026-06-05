@@ -1,6 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using RestAPI_Exercise.Infrastructure.Contexts;
 using RestAPI_Exercise.Infrastructure.Adapters;
+using RestAPI_Exercise.Infrastructure.Repositories;
+using RestAPI_Exercise.Application.Domains.Repositories;
+using RestAPI_Exercise.Application.Usecases;
+using RestAPI_Exercise.Application.Usecases.Products.Interfaces;
+using RestAPI_Exercise.Application.Usecases.Products.Interactors;
+using RestAPI_Exercise.Infrastructure.Shared;
+using RestAPI_Exercise.Presentation.Adapters;
 namespace RestAPI_Exercise.Presentation.Configs;
 /// <summary>
 /// 依存関係(DI)の設定
@@ -66,6 +73,12 @@ private static IServiceCollection AddInfrastructureDependencies(
     services.AddScoped<ProductEntityAdapter>();
             // 商品、商品カテゴリ、商品在庫オブジェクトの相互変換Factoryクラス
     services.AddScoped<ProductFactory>();
+        // ドメインオブジェクト:商品カテゴリのCRUD操作Repositoryインターフェイス
+    services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+    // ドメインオブジェクト:商品のCRUD操作Repositoryインターフェイス
+    services.AddScoped<IProductRepository, ProductRepository>();
+         // Unit of Workパターンを利用したトランザクション制御インターフェイス
+     services.AddScoped<IUnitOfWork, UnitOfWork>();
     return services;
 }
 
@@ -79,6 +92,10 @@ private static IServiceCollection AddInfrastructureDependencies(
     private static IServiceCollection AddApplicationLayerDependencies(
         this IServiceCollection services, IConfiguration config)
     {
+        services.AddScoped<IRegisterProductUsecase, RegisterProductUsecase>();
+        services.AddScoped<IUpdateProductUsecase, UpdateProductUsecase>();
+        services.AddScoped<ISearchProductByKeywordUsecase, SearchProductByKeywordUsecase>();
+
         return services;
     }
 
@@ -91,6 +108,9 @@ private static IServiceCollection AddInfrastructureDependencies(
     private static IServiceCollection AddPresentationLayerDependencies(
         this IServiceCollection services, IConfiguration config)
     {
+        services.AddControllers();
+        services.AddScoped<RegisterProductViewModelAdapter>();
+        services.AddScoped<UpdateProductViewModelAdapter>();
         return services;
     }
 
