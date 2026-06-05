@@ -289,4 +289,8 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Castle.Core.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Moq.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
-/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/ja/MSTestAdapter.PlatformServices.resources.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.Annotations.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Infrastructure.Tests/bin/Debug/net10.0/RestAPI_Exercise.Presentation.xml

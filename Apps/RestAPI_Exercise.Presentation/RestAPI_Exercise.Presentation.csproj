@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
+<PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <!-- XMLドキュメントを出力してSwaggerに取り込ませる -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- XMLコメント未記載の警告を抑制(任意) -->
+    <NoWarn>$(NoWarn);1591</NoWarn> 
+</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
@@ -14,6 +18,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.*" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.5" />
   </ItemGroup>
 
    <!-- アプリケーション層、インフラストラクチャ層のプロジェクトを参照 -->
@@ -21,5 +27,7 @@
     <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Application\RestAPI_Exercise.Application.csproj" />
     <ProjectReference Include="..\..\Apps\RestAPI_Exercise.Infrastructure\RestAPI_Exercise.Infrastructure.csproj" />
   </ItemGroup>
+
+
 
 </Project>

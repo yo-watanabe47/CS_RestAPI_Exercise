@@ -1,41 +1,55 @@
+using System.Reflection;
+using RestAPI_Exercise.Presentation.Configs;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// 依存関係(DI)の設定
+ApplicationDependencyExtensions
+    .AddApplicationDependencies(builder.Services, builder.Configuration);
 
+// Swaggerを有効化する
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    // アノテーションを有効化（SwaggerTagやSwaggerResponseを反映）
+    c.EnableAnnotations();
+
+    // XMLコメントをSwaggerに取り込む（<summary>などを反映）
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
+// WebApplicationを生成する
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// 開発環境のみSwaggerを有効化
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestAPI Exercise v1");
+        c.RoutePrefix = string.Empty; // ルートURLでUIを開く
+
+        // UseRequestInterceptor メソッドを使用する
+        c.UseRequestInterceptor("(request) => { request.credentials = 'include'; return request; }");
+    });
 }
 
+
+// 例外ハンドリングを登録する
+app.UseExceptionHandling();
+
+// HTTPリクエストをHTTPSへ自動リダイレクトするKestrelミドルウェアを有効化
 app.UseHttpsRedirection();
+// HSTSを有効化
+app.UseHsts();
+// 認証(Authentication)を有効化する
+app.UseAuthentication();
+// 認可(Authorization)を有効化する
+app.UseAuthorization();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
+// Controllerのルーティングを有効化
+app.MapControllers();
+// アプリケーションを実行する
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

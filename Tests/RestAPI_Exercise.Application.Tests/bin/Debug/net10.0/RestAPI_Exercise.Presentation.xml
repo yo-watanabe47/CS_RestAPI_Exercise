@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestAPI_Exercise.Presentation</name>
+    </assembly>
+    <members>
+        <member name="T:RestAPI_Exercise.Presentation.Adapters.RegisterProductViewModelAdapter">
+            <summary>
+            RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Adapters.RegisterProductViewModelAdapter.RestoreAsync(RestAPI_Exercise.Presentation.ViewModels.RegisterProductViewModel)">
+            <summary>
+            RegisterProductViewModelからドメインオブジェクト:Productを復元する
+            </summary>
+            <param name="target">ユースケース:[新商品を登録する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Adapters.UpdateProductViewModelAdapter">
+            <summary>
+            UpdateProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Adapters.UpdateProductViewModelAdapter.RestoreAsync(RestAPI_Exercise.Presentation.ViewModels.UpdateProductViewModel)">
+            <summary>
+            UpdateProductViewModelからドメインオブジェクト:Productを復元する
+            </summary>
+            <param name="target">ユースケース:[商品を変更する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions">
+            <summary>
+            依存関係(DI)の設定
+            インフラストラクチャ層、アプリケーション層、プレゼンテーション層
+            をまとめて追加する拡張クラス
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions.AddApplicationDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            アプリ全体の依存関係を一括追加する拡張メソッド
+            </summary>
+            <param name="services">サービスコレクション</param>
+            <param name="config">構成情報</param>
+            <returns>IServiceCollection(チェーン可能)</returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions.AddInfrastructureDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            インフラストラクチャ層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config">アプリケーションの設定情報を管理</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions.AddApplicationLayerDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            アプリケーション層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions.AddPresentationLayerDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            プレゼンテーション層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ApplicationDependencyExtensions.BuildAppProvider(Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Action{Microsoft.Extensions.Logging.ILoggingBuilder})">
+            <summary>
+            テストプロジェクトにServiceProviderを提供するヘルパメソッド
+            生成されたServiceProviderは、テストクラスで使用されるDIコンテナとして機能する
+            </summary>
+            <param name="config"></param>
+            <param name="configureServices"></param>
+            <param name="configureLogging"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Controllers.RegisterProductController">
+            <summary>
+            ユースケース:[新商品を登録する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterProductController.#ctor(RestAPI_Exercise.Application.Usecases.Products.Interfaces.IRegisterProductUsecase,RestAPI_Exercise.Presentation.Adapters.RegisterProductViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[新商品を登録する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterProductController.GetCategories">
+            <summary>
+            商品カテゴリ一覧の取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterProductController.GetCategoryById(System.String)">
+            <summary>
+            選択された商品カテゴリIdで商品カテゴリを取得する取得する
+            </summary>
+            <param name="categoryId">商品カテゴリId(UUID)</param>
+            <returns>該当するカテゴリが存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterProductController.ValidateProduct(System.String)">
+            <summary>
+            商品が既に存在するかを検証する
+            </summary>
+            <param name="productName">検証対象の商品名</param>
+            <returns>
+            存在しない場合:Ok(200)、存在する場合:Conflict(409) 
+            </returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterProductController.Register(RestAPI_Exercise.Presentation.ViewModels.RegisterProductViewModel)">
+            <summary>
+            新商品を登録する
+            </summary>
+            <param name="model">商品登録用ViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Controllers.SearchProductByKeywordController">
+            <summary>
+            ユースケース:[商品をキーワード検索する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.SearchProductByKeywordController.#ctor(RestAPI_Exercise.Application.Usecases.Products.Interfaces.ISearchProductByKeywordUsecase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品をキーワード検索する]を実現するインターフェイス</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.SearchProductByKeywordController.Search(System.String)">
+            <summary>
+            キーワードで商品を検索する
+            </summary>
+            <param name="keyword">検索キーワード</param>
+            <returns>検索結果の商品一覧</returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Controllers.UpdateProductController">
+            <summary>
+            ユースケース:[商品を変更する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.UpdateProductController.#ctor(RestAPI_Exercise.Application.Usecases.Products.Interfaces.IUpdateProductUsecase,RestAPI_Exercise.Presentation.Adapters.UpdateProductViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品を変更する]を実現するインターフェイス</param>
+            <param name="adapter">UpdateProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.UpdateProductController.GetProductById(System.String)">
+            <summary>
+            選択された商品Idで商品を取得する取得する
+            </summary>
+            <param name="productId">商品Id(UUID)</param>
+            <returns>該当する商品が存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.UpdateProductController.ValidateProduct(System.String)">
+            <summary>
+            商品が既に存在するかを検証する
+            </summary>
+            <param name="productName">検証対象の商品名</param>
+            <returns>
+            存在しない場合:Ok(200)、存在する場合:Conflict(409) 
+            </returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.UpdateProductController.Updated(RestAPI_Exercise.Presentation.ViewModels.UpdateProductViewModel)">
+            <summary>
+            商品を変更する
+            </summary>
+            <param name="model">商品変更用ViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.ViewModels.RegisterProductViewModel">
+            <summary>
+            ユースケース:[新商品を登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.ViewModels.UpdateProductViewModel">
+            <summary>
+            ユースケース:[商品を変更する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>
