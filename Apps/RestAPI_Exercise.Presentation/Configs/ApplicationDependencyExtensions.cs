@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Identity;
 using RestAPI_Exercise.Application.Domains.Models;
 using RestAPI_Exercise.Application.Usecases.Users.Interfaces;
 using RestAPI_Exercise.Application.Usecases.Users.Interactors;
+using RestAPI_Exercise.Application.Usecases.Authenticate.Interfaces;
+using RestAPI_Exercise.Application.Usecases.Authenticate.Interactors;
 
 
 namespace RestAPI_Exercise.Presentation.Configs;
@@ -117,6 +119,8 @@ private static IServiceCollection AddInfrastructureDependencies(
         services.AddScoped<IRegisterUserUsecase, RegisterUserUsecase>();
          // JwtSettingsをバインドしてDIに登録する
         services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
+        // ユースケース:[ログインする]を実現するインターフェイス
+        services.AddScoped<IAuthenticateUserUsecase, AuthenticateUserUsecase>();
         return services;
     }
 

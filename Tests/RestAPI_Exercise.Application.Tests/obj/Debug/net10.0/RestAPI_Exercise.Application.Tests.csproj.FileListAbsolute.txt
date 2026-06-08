@@ -291,7 +291,6 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/RestAPI_Exercise.Presentation.xml
-/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/ja/MSTestAdapter.PlatformServices.resources.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
@@ -300,3 +299,4 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Tests/RestAPI_Exercise.Application.Tests/bin/Debug/net10.0/ja/MSTestAdapter.PlatformServices.resources.dll

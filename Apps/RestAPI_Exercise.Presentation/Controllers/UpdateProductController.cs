@@ -5,6 +5,7 @@ using RestAPI_Exercise.Application.Usecases.Products.Interfaces;
 using RestAPI_Exercise.Presentation.Adapters;
 using RestAPI_Exercise.Presentation.ViewModels;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 namespace RestAPI_Exercise.Presentation.Controllers;
 /// <summary>
 /// ユースケース:[商品を変更する]を実現するコントローラ
@@ -34,6 +35,7 @@ public class UpdateProductController : ControllerBase
     /// </summary>
     /// <param name="productId">商品Id(UUID)</param>
     /// <returns>該当する商品が存在すればOK(200)、存在しなければNotFound(404)</returns>
+    [Authorize]
     [HttpGet("product/{productId}")]
     [SwaggerOperation(
         Summary = "商品の取得",
@@ -63,6 +65,8 @@ public class UpdateProductController : ControllerBase
     /// <returns>
     /// 存在しない場合:Ok(200)、存在する場合:Conflict(409) 
     /// </returns>
+    
+    [Authorize]
     [HttpGet("validate")]
     [SwaggerOperation(
         Summary = "商品名の存在確認",
@@ -98,6 +102,7 @@ public class UpdateProductController : ControllerBase
     /// </summary>
     /// <param name="model">商品変更用ViewModel</param>
     /// <returns></returns>
+    [Authorize]
     [HttpPut]
     [SwaggerOperation(
         Summary = "商品変更",

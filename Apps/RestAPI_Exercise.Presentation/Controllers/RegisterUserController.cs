@@ -6,6 +6,7 @@ using RestAPI_Exercise.Application.Usecases.Users.Interfaces;
 using RestAPI_Exercise.Presentation.Adapters;
 using RestAPI_Exercise.Presentation.ViewModels;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestAPI_Exercise.Presentation.Controllers;
 /// <summary>
@@ -31,6 +32,7 @@ public class RegisterUserController : ControllerBase
         _adapter = adapter;
     }
 
+    [Authorize]
     [HttpGet("check")]
     [SwaggerOperation(Summary = "ユーザー名、メールアドレスの重複チェック",
                       Description = "ユーザー名、メールアドレスの存在を検証する")]
@@ -63,6 +65,7 @@ public class RegisterUserController : ControllerBase
     /// </summary>
     /// <param name="viewModel">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
     /// <returns></returns>
+    [Authorize]
     [HttpPost]
     [SwaggerOperation(Summary = "ユーザーを登録",
                       Description = "ユーザー情報を受け取り、ユーザーを登録する")]

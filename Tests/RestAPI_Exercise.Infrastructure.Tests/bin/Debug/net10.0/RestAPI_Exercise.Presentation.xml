@@ -101,6 +101,62 @@
             <param name="app">IApplicationBuilderのインスタンス</param>
             <returns>登録後のIApplicationBuilder</returns>
         </member>
+        <member name="T:RestAPI_Exercise.Presentation.Configs.JwtAuthenticationExtensions">
+            <summary>
+            JWT認証のサービス登録を行う拡張クラス
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.JwtAuthenticationExtensions.AddJwtAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            JwtBearerミドルウェアを登録し、TokenValidationParametersとイベントフックを設定する
+            </summary>
+            <param name="services">サービスコレクション</param>
+            <param name="config">構成情報</param>
+            <returns>IServiceCollection(チェーン可能)</returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Configs.SwaggerExtensions">
+            <summary>
+            Swagger(Open API)のサービス登録を行う拡張クラス
+            - アノテーション有効化
+            - XML コメントの取り込み
+            - JWT(Bearer)のセキュリティ定義と要件の追加
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.SwaggerExtensions.AddSwaggerWithJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Swaggerを有効化し、JWT認証をSwaggerUIから利用できるように設定する
+            </summary>
+            <param name="services">サービスコレクション</param>
+            <param name="xmlDocAssembly">
+            XMLドキュメントコメントを取り込む対象のアセンブリ
+            </param>
+            <returns>IServiceCollection(チェーン可能)</returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Controllers.AuthenticateController">
+            <summary>
+            ユースケース:[ログイン/ログアウト]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.AuthenticateController.#ctor(RestAPI_Exercise.Application.Usecases.Authenticate.Interfaces.IAuthenticateUserUsecase,RestAPI_Exercise.Application.Security.IJwtTokenProvider)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[ログインする]を実現するインターフェイス</param>
+            <param name="provider">JWTの発行・検証インターフェイス</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.AuthenticateController.Login(RestAPI_Exercise.Presentation.ViewModels.LoginViewModel)">
+            <summary>
+            ログイン認証し、成功したらJWTトークンを返す
+            </summary>
+            <param name="model">ログイン情報ViewModel</param>
+            <returns>認証成功時はJWTトークン、失敗時は401</returns>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.AuthenticateController.Logout">
+            <summary>
+            ログアウト(ステートレス: バックエンド側では何もせず204返却)
+            </summary>
+            <returns>常に204 No Content</returns>
+        </member>
         <member name="T:RestAPI_Exercise.Presentation.Controllers.RegisterProductController">
             <summary>
             ユースケース:[新商品を登録する]を実現するコントローラ
@@ -235,6 +291,11 @@
             - InternalException とそれ以外の例外を区別して処理する
             </summary>
         </member>
+        <member name="T:RestAPI_Exercise.Presentation.ViewModels.LoginViewModel">
+            <summary>
+            ユースケース:[新商品を登録する]を実現するViewModel
+            </summary>
+        </member>
         <member name="T:RestAPI_Exercise.Presentation.ViewModels.RegisterProductViewModel">
             <summary>
             ユースケース:[新商品を登録する]を実現するViewModel
@@ -258,6 +319,16 @@
         <member name="P:RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel.Password">
             <summary>
             平文パスワード（8〜12文字）
+            </summary>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.ViewModels.TokenResponse">
+            <summary>
+            JWTトークンをクライアントに返すためのレスポンスモデル
+            </summary>
+        </member>
+        <member name="P:RestAPI_Exercise.Presentation.ViewModels.TokenResponse.Token">
+            <summary>
+            JWTトークン文字列
             </summary>
         </member>
         <member name="T:RestAPI_Exercise.Presentation.ViewModels.UpdateProductViewModel">
