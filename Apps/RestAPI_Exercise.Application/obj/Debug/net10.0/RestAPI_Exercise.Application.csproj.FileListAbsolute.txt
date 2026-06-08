@@ -10,3 +10,4 @@
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/refint/RestAPI_Exercise.Application.dll
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.pdb
 /home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/ref/RestAPI_Exercise.Application.dll
+/home/fullness/CS_Training/RestAPI/RestAPI_Exercise/Apps/RestAPI_Exercise.Application/obj/Debug/net10.0/RestAPI_Exercise.Application.csproj.AssemblyReference.cache

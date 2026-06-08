@@ -16,6 +16,18 @@
             <param name="target">ユースケース:[新商品を登録する]を実現するViewModel</param>
             <returns></returns>
         </member>
+        <member name="T:RestAPI_Exercise.Presentation.Adapters.RegisterUserViewModelAdapter">
+            <summary>
+            RegisterUserViewModelからドメインオブジェクト:Userへ変換するアダプタ
+            </summary> 
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Adapters.RegisterUserViewModelAdapter.RestoreAsync(RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel)">
+            <summary>
+            RegisterUserViewModelからドメインオブジェクト:Userを復元する
+            </summary>
+            <param name="target">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
         <member name="T:RestAPI_Exercise.Presentation.Adapters.UpdateProductViewModelAdapter">
             <summary>
             UpdateProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
@@ -77,6 +89,18 @@
             <param name="configureLogging"></param>
             <returns></returns>
         </member>
+        <member name="T:RestAPI_Exercise.Presentation.Configs.ExceptionHandlingExtensions">
+            <summary>
+            ExceptionHandlingMiddlewareを登録する拡張メソッドクラス
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Configs.ExceptionHandlingExtensions.UseExceptionHandling(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            ExceptionHandlingMiddlewareをアプリケーションパイプラインに登録する拡張メソッド
+            </summary>
+            <param name="app">IApplicationBuilderのインスタンス</param>
+            <returns>登録後のIApplicationBuilder</returns>
+        </member>
         <member name="T:RestAPI_Exercise.Presentation.Controllers.RegisterProductController">
             <summary>
             ユースケース:[新商品を登録する]を実現するコントローラ
@@ -116,6 +140,25 @@
             新商品を登録する
             </summary>
             <param name="model">商品登録用ViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.Controllers.RegisterUserController">
+            <summary>
+            ユースケース:[ユーザーを登録する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterUserController.#ctor(RestAPI_Exercise.Application.Usecases.Users.Interfaces.IRegisterUserUsecase,RestAPI_Exercise.Presentation.Adapters.RegisterUserViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[ユーザーを登録する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Controllers.RegisterUserController.Register(RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel)">
+            <summary>
+            ユーザーの登録
+            </summary>
+            <param name="viewModel">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
             <returns></returns>
         </member>
         <member name="T:RestAPI_Exercise.Presentation.Controllers.SearchProductByKeywordController">
@@ -171,9 +214,50 @@
             <param name="model">商品変更用ViewModel</param>
             <returns></returns>
         </member>
+        <member name="T:RestAPI_Exercise.Presentation.Middlewares.ExceptionHandlingMiddleware">
+            <summary>
+            InternalException及び未対応の例外をハンドリングするミドルウェア
+            - 例外をキャッチし、ログにエラーメッセージとスタックトレースを出力する
+            - クライアントには統一的な JSON レスポンスを返し、内部情報を直接漏らさない
+            </summary>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Middlewares.ExceptionHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{RestAPI_Exercise.Presentation.Middlewares.ExceptionHandlingMiddleware})">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="next">次のミドルウェアを実行するためのデリゲート</param>
+            <param name="logger">>ログ出力のためのILoggerインスタンス</param>
+        </member>
+        <member name="M:RestAPI_Exercise.Presentation.Middlewares.ExceptionHandlingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            ミドルウェア本体
+            - try/catch で次の処理をラップし、例外発生時にキャッチする
+            - InternalException とそれ以外の例外を区別して処理する
+            </summary>
+        </member>
         <member name="T:RestAPI_Exercise.Presentation.ViewModels.RegisterProductViewModel">
             <summary>
             ユースケース:[新商品を登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel">
+            <summary>
+            ユースケース:[ユーザーを登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="P:RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel.Username">
+            <summary>
+            ユーザー名（3〜30文字）
+            </summary>
+        </member>
+        <member name="P:RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel.Email">
+            <summary>
+            メールアドレス（最大100文字）
+            </summary>
+        </member>
+        <member name="P:RestAPI_Exercise.Presentation.ViewModels.RegisterUserViewModel.Password">
+            <summary>
+            平文パスワード（8〜12文字）
             </summary>
         </member>
         <member name="T:RestAPI_Exercise.Presentation.ViewModels.UpdateProductViewModel">

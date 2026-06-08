@@ -152,6 +152,7 @@ public class RegisterProductController : ControllerBase
             // 商品を永続化する
             await _usecase.RegisterProductAsync(product);
             return Created($"/api/products/{product.ProductUuid}", product.ProductUuid);
+            //上の最後のProductUuidを消したほうがいいかも
         }
         catch (ExistsException ex)
         {

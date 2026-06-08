@@ -7,7 +7,15 @@ using RestAPI_Exercise.Application.Usecases;
 using RestAPI_Exercise.Application.Usecases.Products.Interfaces;
 using RestAPI_Exercise.Application.Usecases.Products.Interactors;
 using RestAPI_Exercise.Infrastructure.Shared;
+using RestAPI_Exercise.Application.Security;
 using RestAPI_Exercise.Presentation.Adapters;
+using RestAPI_Exercise.Infrastructure.Security;
+using Microsoft.AspNetCore.Identity;
+using RestAPI_Exercise.Application.Domains.Models;
+using RestAPI_Exercise.Application.Usecases.Users.Interfaces;
+using RestAPI_Exercise.Application.Usecases.Users.Interactors;
+
+
 namespace RestAPI_Exercise.Presentation.Configs;
 /// <summary>
 /// 依存関係(DI)の設定
@@ -22,17 +30,17 @@ public static class ApplicationDependencyExtensions
     /// <param name="services">サービスコレクション</param>
     /// <param name="config">構成情報</param>
     /// <returns>IServiceCollection(チェーン可能)</returns>
-    public static IServiceCollection AddApplicationDependencies(
-        this IServiceCollection services, IConfiguration config)
-    {
-        // インフラストラクチャ層の依存関係を追加
-        services.AddInfrastructureDependencies(config);
-        // アプリケーション層の依存関係を追加
-        services.AddApplicationLayerDependencies(config);
-        // プレゼンテーション層の依存関係を追加
-        services.AddPresentationLayerDependencies(config);
-        return services;
-    }
+public static IServiceCollection AddApplicationDependencies(
+this IServiceCollection services, IConfiguration config)
+{
+    // インフラストラクチャ層の依存関係を追加
+    services.AddInfrastructureDependencies(config);
+    // アプリケーション層の依存関係を追加
+   services.AddApplicationLayerDependencies(config);
+    // プレゼンテーション層の依存関係を追加
+    services.AddPresentationLayerDependencies(config);
+    return services;
+}
 
     // /// <summary>
     // /// インフラストラクチャ層の依存関係を追加
@@ -71,14 +79,20 @@ private static IServiceCollection AddInfrastructureDependencies(
     services.AddScoped<ProductCategoryEntityAdapter>();
     // ドメインオブジェクト:ProductとProductEntityの相互変換クラス
     services.AddScoped<ProductEntityAdapter>();
-            // 商品、商品カテゴリ、商品在庫オブジェクトの相互変換Factoryクラス
+    // ドメインオブジェクト:UserとUserEntityの相互変換クラス
+    services.AddScoped<UserEntityAdapter>();
+    // 商品、商品カテゴリ、商品在庫オブジェクトの相互変換Factoryクラス
     services.AddScoped<ProductFactory>();
-        // ドメインオブジェクト:商品カテゴリのCRUD操作Repositoryインターフェイス
+    // ドメインオブジェクト:商品カテゴリのCRUD操作Repositoryインターフェイス
     services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
     // ドメインオブジェクト:商品のCRUD操作Repositoryインターフェイス
     services.AddScoped<IProductRepository, ProductRepository>();
-         // Unit of Workパターンを利用したトランザクション制御インターフェイス
-     services.AddScoped<IUnitOfWork, UnitOfWork>();
+    // ドメインオブジェクト:ユーザーのCRUD操作Repositoryインターフェイス
+    services.AddScoped<IUserRepository, UserRepository>(); 
+    // Unit of Workパターンを利用したトランザクション制御インターフェイス
+    services.AddScoped<IUnitOfWork, UnitOfWork>();
+    // JWTの発行・検証インターフェイスの実装
+    services.AddSingleton<IJwtTokenProvider, JwtTokenProvider>();
     return services;
 }
 
@@ -95,7 +109,14 @@ private static IServiceCollection AddInfrastructureDependencies(
         services.AddScoped<IRegisterProductUsecase, RegisterProductUsecase>();
         services.AddScoped<IUpdateProductUsecase, UpdateProductUsecase>();
         services.AddScoped<ISearchProductByKeywordUsecase, SearchProductByKeywordUsecase>();
-
+        // ASP.NET Core Identityのパスワードハッシュ化・検証機能
+        services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+        // PBKDF2アルゴリズムを利用したパスワードハッシュ化・検証機能
+        services.AddScoped<IPasswordHashingService, PBKDF2PasswordHashingService>();
+        // ユースケース:[ユーザーを登録する]を実現するインターフェイス
+        services.AddScoped<IRegisterUserUsecase, RegisterUserUsecase>();
+         // JwtSettingsをバインドしてDIに登録する
+        services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
         return services;
     }
 
@@ -111,6 +132,7 @@ private static IServiceCollection AddInfrastructureDependencies(
         services.AddControllers();
         services.AddScoped<RegisterProductViewModelAdapter>();
         services.AddScoped<UpdateProductViewModelAdapter>();
+        services.AddScoped<RegisterUserViewModelAdapter>();
         return services;
     }
 

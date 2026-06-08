@@ -30,7 +30,11 @@ public class AppDbContext : DbContext
     /// 商品在庫テーブルアクセスプロパティ
     /// </summary>
     public DbSet<ProductStockEntity> ProductStocks => Set<ProductStockEntity>();
-
+    /// <summary>
+    /// ユーザーテーブルアクセスプロパティ
+    /// </summary>
+    public DbSet<UserEntity> Users => Set<UserEntity>();
+    /// <summary>
     // TODO: Fluent API でマッピングを定義する
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -89,5 +93,20 @@ public class AppDbContext : DbContext
                  v => v.ToString()
             );
         });
+        // UserEntityの制約（ユニークインデックスなど）を定義可能
+        modelBuilder.Entity<UserEntity>(e => 
+        {
+            e.HasIndex(u => u.UserUuid).IsUnique();
+            e.HasIndex(u => u.Username).IsUnique();
+            e.HasIndex(u => u.Email).IsUnique();
+
+            // C#のstring ⇔ PostgreSQLのuuidを自動変換する
+            e.Property(u => u.UserUuid)
+             .HasConversion(
+                 v => Guid.Parse(v),
+                 v => v.ToString()
+             );
+        });
     }
+
 }
